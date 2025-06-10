@@ -21,7 +21,7 @@ Get all pool addresses.
 
 
 ### pool_info
-
+#### data structure:
 ``` 
  struct PoolInfo {
     pool: address,
@@ -47,7 +47,9 @@ Get all pool addresses.
     lp_token_supply: u128,
     lp_token_decimals: u8,
 }
-
+```
+#### funtion:
+```
 public fun pool_info(pool: address): PoolInfo
 ```
 
