@@ -5,7 +5,7 @@ nav_order: 1
 ---
 
 ## Read-Only Functions
-```move
+```
 public fun optimal_liquidity_amounts(
     tokenA: Object<Metadata>,
     tokenB: Object<Metadata>,
@@ -13,7 +13,9 @@ public fun optimal_liquidity_amounts(
     amountBDesired: u128,
 ): (u128, u128)
 ```
+
 Returns the optimal amounts of tokens to provide as liquidity given the desired amount of each token to add. The returned values are the amounts of tokenA, tokenB.
+
 | Name           | Type      |                                                              |
 | :------------- | :-------- | :----------------------------------------------------------- |
 | tokenA         | `address` | A pool token.                                                |
@@ -21,7 +23,7 @@ Returns the optimal amounts of tokens to provide as liquidity given the desired 
 | amountADesired | `u128`    | The amount of tokenA to add as liquidity if the B/A price is <= amountBDesired/amountADesired (A depreciates). |
 | amountBDesired | `u128`    | The amount of tokenB to add as liquidity if the A/B price is <= amountADesired/amountBDesired (B depreciates). |
 
-```move
+```
 public fun optimal_liquidity_amount_opposite(
     pool: address,
     tokenA: Object<Metadata>,
