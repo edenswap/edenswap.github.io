@@ -1,5 +1,5 @@
 ---
-title: Concepts
-parent: Virtual Liquidity
+title: Virtual Liquidity
+parent: Concepts
 nav_order: 2
 ---
