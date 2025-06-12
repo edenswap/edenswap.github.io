@@ -1,6 +1,6 @@
 ---
 title: Contract guides
-nav_order: 2
+nav_order: 3
 ---
 
 # Contract guides
