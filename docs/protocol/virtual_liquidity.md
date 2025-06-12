@@ -1,5 +1,5 @@
 ---
 title: Virtual Liquidity
-parent: Concepts
+parent: Protocol
 nav_order: 2
 ---

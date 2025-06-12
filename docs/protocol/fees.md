@@ -1,5 +1,5 @@
 ---
 title: Fees
-parent: Concepts
+parent: Protocol
 nav_order: 5
 ---
