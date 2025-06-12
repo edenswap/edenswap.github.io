@@ -5,7 +5,9 @@ nav_order: 2
 ---
 
 ## Read-Only Functions
-
+```rust
+// Null
+```
 
 
 ## State-Changing Functions
