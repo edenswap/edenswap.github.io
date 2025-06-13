@@ -81,15 +81,9 @@ search:
 enable_copy_code_button: true
 
 kramdown:
-  footnote_backlink: "&#8617;&#xfe0e;"
-  syntax_highlighter: rouge
-  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
-    # default_lang: console
-    span:
-      line_numbers: false
+  syntax_highlighter_opts:
     block:
-      line_numbers: true
-      start_line: 1
+      line_numbers: false
 
 compress_html:
   clippings: all
