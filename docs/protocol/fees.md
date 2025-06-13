@@ -61,10 +61,11 @@ Where `dynamic_fee_bps` is calculated as:
 
 $$ 
 dynamic\_fee\_bps = \begin{cases}
-BASE\_SWAP\_FEES\_BPS \times (multipler - 1) \times (2 \times \frac{10000}{10000 + propotion\_bps} - 1) & \text{if } propotion\_bps < NEED\_DYNAMIC\_FEE\_RATE\_BPS \\
+BASE\_SWAP\_FEES\_BPS \times (multipler - 1) \times (2 \times \frac{10000}{10000 + propotion\_bps} - 1) & \text{if } Cond \\
 0 & \text{otherwise}
 \end{cases} 
 $$
+where $Cond =( propotion\_bps < NEED\_DYNAMIC\_FEE\_RATE\_BPS )$
 
 ## 3. Pool Imbalance Calculation
 
