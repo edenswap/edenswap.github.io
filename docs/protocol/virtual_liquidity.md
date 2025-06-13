@@ -109,7 +109,7 @@ $$
 S = \frac{1}{m} \times S_{base} 
 $$
 
-Where S_base is the slippage without virtual liquidity.
+Where $ S_{base} $ is the slippage without virtual liquidity.
 
 ## 6. Trading Examples
 
