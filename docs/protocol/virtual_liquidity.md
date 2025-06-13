@@ -1,3 +1,9 @@
+---
+title: Liquidity
+parent: Protocol
+nav_order: 5
+---
+
 # Virtual Liquidity
 
 ## 1. Core Concepts
