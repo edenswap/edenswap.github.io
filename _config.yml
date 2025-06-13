@@ -5,6 +5,8 @@ url: https://just-the-docs.github.io
 
 permalink: pretty
 
+markdown: kramdown
+
 defaults:
   - scope:
       path: "docs" # an empty string here means all files in the project
@@ -79,9 +81,16 @@ search:
 enable_copy_code_button: true
 
 kramdown:
-  syntax_highlighter_opts:
-    block:
+  footnote_backlink: "&#8617;&#xfe0e;"
+  syntax_highlighter: rouge
+  syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
+    css_class: highlight
+    # default_lang: console
+    span:
       line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
 
 compress_html:
   clippings: all

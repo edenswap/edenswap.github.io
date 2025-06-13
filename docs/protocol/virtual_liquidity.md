@@ -3,6 +3,19 @@ title: Liquidity
 parent: Protocol
 nav_order: 3
 ---
+<head>
+   <script type="text/javascript" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+   </script>
+   <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['$`', '`$'], ['\\(', '\\)']],
+          displayMath: [['```math', '```'], ['$$', '$$'], ['\\[', '\\]']]
+        }
+      };
+   </script>
+</head>
 
 # Virtual Liquidity
 
