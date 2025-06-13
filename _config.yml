@@ -47,7 +47,7 @@ exclude:
 logo: "/assets/images/dex.png"
 
 aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+  Launch APP: https://dex-test.endless.link
 # Enable or disable the site search
 # Supports true (default) or false
 search_enabled: true
