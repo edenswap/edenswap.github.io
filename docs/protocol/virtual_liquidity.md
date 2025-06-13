@@ -11,10 +11,14 @@ nav_order: 3
 ### 1.1 Total Reserves
 The total reserves (TR) in a pool consist of real reserves (R) and virtual reserves (VR):
 
-$$ TR = R + VR $$
+$$ 
+TR = R + VR 
+$$
 
 Where virtual reserves are calculated as:
-$$ VR = R \times (m - 1) $$
+$$
+VR = R \times (m - 1) 
+$$
 - m is the multiplier (1-100)
 
 ## 2. Trading Impact Analysis
@@ -22,12 +26,16 @@ $$ VR = R \times (m - 1) $$
 ### 2.1 Price Calculation
 The price (P) in the pool is determined by the ratio of total reserves:
 
-$$ P = \frac{TR_1}{TR_0} = \frac{R_1 + VR_1}{R_0 + VR_0} $$
+$$
+P = \frac{TR_1}{TR_0} = \frac{R_1 + VR_1}{R_0 + VR_0} 
+$$
 
 ### 2.2 Output Amount Calculation
 For a given input amount (amount_in), the output amount (amount_out) is calculated as:
 
-$$ amount\_out = \frac{amount\_in \times TR_1}{amount\_in + TR_0} $$
+$$ 
+amount\_out = \frac{amount\_in \times TR_1}{amount\_in + TR_0} 
+$$
 
 ## 3. Mathematical Implementation
 
@@ -51,7 +59,9 @@ let amount_out = math128::mul_div(
 ### 4.1 Price Impact Formula
 The price impact (PI) is calculated as:
 
-$$ PI_{bps} = \frac{(TR_{in} + amount\_in) \times TR_{out}}{(TR_{out} - amount\_out) \times TR_{in}} \times 10000 - 10000 $$
+$$ 
+PI_{bps} = \frac{(TR_{in} + amount\_in) \times TR_{out}}{(TR_{out} - amount\_out) \times TR_{in}} \times 10000 - 10000 
+$$
 
 Where:
 - TR_in: Total reserve of input token
@@ -72,16 +82,19 @@ let pi_bps = (BPS_10000 as u256) *
 ### 5.1 Price Stability
 The price change (ΔP) for a given trade is reduced by virtual liquidity:
 
-$$ \Delta P = \frac{P_{after} - P_{before}}{P_{before}} $$
+$$
+\Delta P = \frac{P_{after} - P_{before}}{P_{before}}
+$$
 
 Where:
-$$ P_{before} = \frac{TR_1}{TR_0} $$
-$$ P_{after} = \frac{TR_1 - amount\_out}{TR_0 + amount\_in} $$
+$ P_{before} = \frac{TR_1}{TR_0} $, $ P_{after} = \frac{TR_1 - amount\_out}{TR_0 + amount\_in} $
 
 ### 5.2 Slippage Reduction
 The slippage (S) is reduced by the multiplier:
 
-$$ S = \frac{1}{m} \times S_{base} $$
+$$
+S = \frac{1}{m} \times S_{base} 
+$$
 
 Where S_base is the slippage without virtual liquidity.
 
@@ -90,12 +103,16 @@ Where S_base is the slippage without virtual liquidity.
 ### 6.1 Small Trade
 For a small trade relative to total reserves:
 
-$$ amount\_out \approx amount\_in \times \frac{TR_1}{TR_0} $$
+$$
+amount\_out \approx amount\_in \times \frac{TR_1}{TR_0} 
+$$
 
 ### 6.2 Large Trade
 For a large trade, the impact is reduced by virtual liquidity:
 
-$$ amount\_out = \frac{amount\_in \times TR_1}{amount\_in + TR_0} \times (1 - \frac{amount\_in}{TR_0 + VR_0}) $$
+$$ 
+amount\_out = \frac{amount\_in \times TR_1}{amount\_in + TR_0} \times (1 - \frac{amount\_in}{TR_0 + VR_0}) 
+$$
 
 ## 7. Implementation Details
 
@@ -140,24 +157,32 @@ fun update_reserves_with_liquidity(
 ### 8.1 Optimal Trade Size
 The optimal trade size (OTS) considering virtual liquidity:
 
-$$ OTS = \sqrt{\frac{TR_0 \times TR_1}{2 \times m}} $$
+$$ 
+OTS = \sqrt{\frac{TR_0 \times TR_1}{2 \times m}} 
+$$
 
 ### 8.2 Price Impact Minimization
 To minimize price impact:
 
-$$ \min(PI) = \min(\frac{amount\_in}{TR_0 + VR_0}) $$
+$$ 
+\min(PI) = \min(\frac{amount\_in}{TR_0 + VR_0})
+$$
 
 ## 9. Economic Implications
 
 ### 9.1 Capital Efficiency
 The capital efficiency (CE) is enhanced by virtual liquidity:
 
-$$ CE = \frac{Trading\_Volume}{Real\_Liquidity} \times m $$
+$$ 
+CE = \frac{Trading\_Volume}{Real\_Liquidity} \times m
+$$
 
 ### 9.2 Market Depth
 The effective market depth (MD) is increased:
 
-$$ MD = Real\_Liquidity \times m $$
+$$ 
+MD = Real\_Liquidity \times m 
+$$
 
 ## 10. Implementation Considerations
 
@@ -169,6 +194,8 @@ All calculations use basis points for precision:
 ### 10.2 Rounding Rules
 The protocol uses ceiling division for output amounts:
 
-$$ amount\_out_{final} = \lceil amount\_out_{calculated} \rceil $$
+$$ 
+amount\_out_{final} = \lceil amount\_out_{calculated} \rceil
+$$
 
 This mathematical analysis demonstrates how virtual liquidity affects trading in EdenSwap, showing the relationship between input and output amounts and how the multiplier system enhances price stability and trading efficiency.
