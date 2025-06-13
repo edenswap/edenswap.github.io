@@ -4,7 +4,7 @@ parent: Contract guides
 nav_order: 2
 ---
 
-# Liquidity Pool Contract
+# Liquidity Pool
 
 The Liquidity Pool contract is a core component of EdenSwap that manages token pairs, liquidity provision, and swap operations. It implements a constant product formula (x * y = k) with virtual liquidity support.
 
@@ -57,11 +57,24 @@ public fun pool_info(pool: address): PoolInfo
 ```
 Returns detailed information about a specific pool.
 
-Parameters:
-- `pool`: The address of the liquidity pool
-
-Returns:
-- `PoolInfo`: Detailed pool information including reserves, fees, and virtual liquidity
+| Name                      | Type    | Description                                            |
+| ------------------------- | ------- | ------------------------------------------------------ |
+| pool                      | address | Pool address.                                          |
+| token_0                   | address | One token of pool                                      |
+| token_1                   | address | One token of pool                                      |
+| dao_fee_bps               | u128    | Swap fee rate in bps send to DAO address.              |
+| base_swap_fee_bps         | u128    | Swap fee rate in bps send to pool address.             |
+| multipler                 | u128    | 1 - no virtual liquidity; >= 2 - has virtual liquidity |
+| reserve_0                 | u128    | token_0 reserve amount                                 |
+| reserve_1                 | u128    | token_1 reserve amount                                 |
+| virtual_token_reserve_0   | u128    | token_0 pure virtual amount                            |
+| virtual_token_reserve_1   | u128    | token_1 pure virtual amount                            |
+| virtual_pairing_reserve_0 | u128    | token_0 pairing virtual amount                         |
+| virtual_pairing_reserve_1 | u128    | token_1 pairing virtual amount                         |
+| total_reserve_0           | u128    | Sum of reserve and virtual amounts of token_0          |
+| total_reserve_1           | u128    | Sum of reserve and virtual amounts of token_1          |
+| lp_token_supply           | u128    | LP token total supply.                                 |
+| lp_token_decimals         | u8      | Decimals of LP token.                                  |
 
 #### `pool_tokens_metadata`
 ```rust
@@ -69,8 +82,9 @@ public fun pool_tokens_metadata(pool_addr: address): (TokenInfo, TokenInfo)
 ```
 Returns metadata for both tokens in the pool.
 
-Parameters:
-- `pool_addr`: The address of the liquidity pool
+| Name      | Type    | Description                |
+| --------- | ------- | -------------------------- |
+| pool_addr | address | The address of the pool    |
 
 Returns:
 - `(TokenInfo, TokenInfo)`: Metadata for both tokens in the pool
@@ -81,9 +95,10 @@ public fun lp_token_balance(pool: address, provider: address): u128
 ```
 Returns the LP token balance for a specific provider in a pool.
 
-Parameters:
-- `pool`: The address of the liquidity pool
-- `provider`: The address of the liquidity provider
+| Name      | Type    | Description                    |
+| --------- | ------- | ------------------------------ |
+| pool      | address | The address of the pool        |
+| provider  | address | The address of the provider    |
 
 Returns:
 - `u128`: The LP token balance
@@ -100,10 +115,11 @@ public fun get_amount_out(
 ```
 Calculates the output amount and fees for a given input amount.
 
-Parameters:
-- `pool`: The address of the liquidity pool
-- `token_in`: The metadata of the input token
-- `amount_in`: The amount of input token
+| Name      | Type              | Description                    |
+| --------- | ----------------- | ------------------------------ |
+| pool      | address           | The address of the pool        |
+| token_in  | Object<Metadata>  | The metadata of input token    |
+| amount_in | u128              | The amount of input token      |
 
 Returns:
 - `(u128, u128)`: Tuple containing (output amount, fee amount)
@@ -118,10 +134,11 @@ public fun get_amount_in(
 ```
 Calculates the required input amount and fees for a desired output amount.
 
-Parameters:
-- `pool`: The address of the liquidity pool
-- `token_out`: The metadata of the output token
-- `amount_out`: The desired amount of output token
+| Name       | Type              | Description                     |
+| ---------- | ----------------- | ------------------------------- |
+| pool       | address           | The address of the pool         |
+| token_out  | Object<Metadata>  | The metadata of output token    |
+| amount_out | u128              | The desired output amount       |
 
 Returns:
 - `(u128, u128)`: Tuple containing (input amount, fee amount)
@@ -134,8 +151,9 @@ public fun pool_virtual_token_reserves(pool: address): (u128, u128)
 ```
 Returns the pure virtual reserves for both tokens.
 
-Parameters:
-- `pool`: The address of the liquidity pool
+| Name | Type    | Description             |
+| ---- | ------- | ----------------------- |
+| pool | address | The address of the pool |
 
 Returns:
 - `(u128, u128)`: Tuple containing (token0 virtual reserve, token1 virtual reserve)
@@ -146,8 +164,9 @@ public fun pool_virtual_pairing_reserves(pool: address): (u128, u128)
 ```
 Returns the pairing virtual reserves for both tokens.
 
-Parameters:
-- `pool`: The address of the liquidity pool
+| Name | Type    | Description             |
+| ---- | ------- | ----------------------- |
+| pool | address | The address of the pool |
 
 Returns:
 - `(u128, u128)`: Tuple containing (token0 pairing reserve, token1 pairing reserve)
@@ -166,10 +185,11 @@ public entry fun set_pool_multipler(
 ```
 Updates the virtual liquidity multiplier for a pool.
 
-Parameters:
-- `sender`: Signer reference of the manager
-- `pool_addr`: The address of the liquidity pool
-- `multipler`: New multiplier value (must be >= 1)
+| Name      | Type    | Description                                |
+| --------- | ------- | ------------------------------------------ |
+| sender    | &signer | Signer reference of the manager            |
+| pool_addr | address | The address of the pool                    |
+| multipler | u128    | New multiplier value (must be >= 1)        |
 
 ## Events
 
