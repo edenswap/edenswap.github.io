@@ -10,7 +10,7 @@ The Router contract serves as the main interface for interacting with EdenSwap's
 ## Read-Only Functions
 
 ### optimal_liquidity_amounts
-```move
+```rust
 public fun optimal_liquidity_amounts(
     tokenA: Object<Metadata>,
     tokenB: Object<Metadata>,
@@ -30,7 +30,7 @@ Calculates the optimal amounts of tokens to provide as liquidity based on desire
 **Returns**: Tuple of (optimal amount of tokenA, optimal amount of tokenB)
 
 ### optimal_liquidity_amount_opposite
-```move
+```rust
 public fun optimal_liquidity_amount_opposite(
     pool: address,
     tokenA: Object<Metadata>,
@@ -50,7 +50,7 @@ Calculates the required amount of the opposite token when adding single-sided li
 ## State-Changing Functions
 
 ### create_pool
-```move
+```rust
 public entry fun create_pool(
     creator: &signer,
     tokenA: Object<Metadata>,
@@ -70,7 +70,7 @@ Creates a new liquidity pool and adds initial liquidity. **Note**: One of the to
 | amountB | `u128` | Initial amount of tokenB |
 
 ### add_pair_liquidity_entry
-```move
+```rust
 public entry fun add_pair_liquidity_entry(
     provider: &signer,
     pool: address,
@@ -88,7 +88,7 @@ Adds liquidity to a pool with optimal amounts of both tokens.
 | amount_1_desired | `u128` | Desired amount of second token |
 
 ### add_single_liquidity_entry
-```move
+```rust
 public entry fun add_single_liquidity_entry(
     provider: &signer,
     pool: address,
@@ -106,7 +106,7 @@ Adds single-sided liquidity to a pool, with the opposite side paired with virtua
 | amount_desired | `u128` | Desired amount of token to add |
 
 ### remove_liquidity_entry
-```move
+```rust
 public entry fun remove_liquidity_entry(
     provider: &signer,
     pool: address,
@@ -122,7 +122,7 @@ Removes liquidity from a pool.
 | liquidity | `u128` | Amount of LP tokens to burn |
 
 ### swap_exact_in_entry
-```move
+```rust
 public entry fun swap_exact_in_entry(
     user: &signer,
     token_in: Object<Metadata>,
@@ -142,7 +142,7 @@ Swaps an exact amount of input token for output token. **Note**: One of the toke
 | amount_out_min | `u128` | Minimum amount of output token to receive |
 
 ### swap_exact_in_2pools
-```move
+```rust
 public entry fun swap_exact_in_2pools(
     sender: &signer,
     pools: vector<address>,
@@ -162,7 +162,7 @@ Executes a swap through two pools, using EDS as an intermediate token.
 | amount_out_min | `u128` | Minimum amount of output token to receive |
 
 ### swap_exact_out_entry
-```move
+```rust
 public entry fun swap_exact_out_entry(
     user: &signer,
     token_in: Object<Metadata>,
@@ -182,7 +182,7 @@ Swaps input token for an exact amount of output token. **Note**: One of the toke
 | amount_in_max | `u128` | Maximum amount of input token to spend |
 
 ### swap_exact_out_2pools
-```move
+```rust
 public entry fun swap_exact_out_2pools(
     sender: &signer,
     pools: vector<address>,
