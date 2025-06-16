@@ -110,7 +110,7 @@ Where: $TotalFeeBps = BaseFeeBps + DaoFeeBps + DynamicFeeBps$
 ## 5. Mathematical Implementation
 
 ### 5.1 Fee Calculation Function
-```move
+```rust
 fun calc_dynamic_fee_bps(
     amount_in: u128,
     amount_out: u128,
@@ -143,7 +143,7 @@ fun calc_dynamic_fee_bps(
 ```
 
 ### 5.2 Proportion Calculation
-```move
+```rust
 fun calc_propotion_after_swap_bps(
     amount_in: u128,
     amount_out: u128,

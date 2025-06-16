@@ -53,13 +53,13 @@ $$
 ## 3. Mathematical Implementation
 
 ### 3.1 Reserve Calculation
-```move
+```rust
 let reserves_0_total = reserves_0 + virtual_total_0;
 let reserves_1_total = reserves_1 + virtual_total_1;
 ```
 
 ### 3.2 Output Amount Calculation
-```move
+```rust
 let amount_out = math128::mul_div(
     amount_in, 
     total_reserver_out, 
@@ -81,7 +81,7 @@ Where:
 - $TR_{out}$: Total reserve of output token
 
 ### 4.2 Implementation
-```move
+```rust
 let pi_bps = (BPS_10000 as u256) * 
     ((tr_in as u256) + (amount_in as u256)) * 
     (tr_out as u256) / 
@@ -130,7 +130,7 @@ $$
 ## 7. Implementation Details
 
 ### 7.1 Swap Calculation
-```move
+```rust
 public fun get_amount_out(
     pool: address,
     token_in: Object<Metadata>,
@@ -145,7 +145,7 @@ public fun get_amount_out(
 ```
 
 ### 7.2 Reserve Updates
-```move
+```rust
 fun update_reserves_with_liquidity(
     pool: address,
     liquidity_token_amount: u128,
